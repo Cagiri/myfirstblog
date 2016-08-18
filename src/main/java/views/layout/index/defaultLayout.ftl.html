@@ -1,0 +1,44 @@
+<#macro myLayout title="My First Blog">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>${title}</title>
+   	<meta charset="utf-8">
+   	<meta name="viewport" content="width=device-width, initial-scale=1">
+   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  	<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   	
+  	<link rel="stylesheet" href="assets/css/custom.css" />
+  </head>
+<body id="myBlog" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <div>
+        
+        <#include "../index/header.ftl.html"/>
+        
+        <#include "../index/body.ftl.html"/>
+        
+        <#if (flash.error)??>
+            <div class="alert alert-danger">
+                ${flash.error}
+            </div>
+        </#if>
+        
+        <#if (flash.success)??>
+            <div class="alert alert-success">
+                ${flash.success}
+            </div>
+        </#if>
+
+        <#nested/>
+
+        <#include "../index/footer.ftl.html"/>
+        
+    </div> <!-- /container -->
+    <script type="text/javascript" src="/assets/javascript/ScrollingPageSmoothly.js"></script>
+</body>
+</html>
+</#macro>
